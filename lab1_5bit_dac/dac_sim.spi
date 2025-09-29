@@ -1,0 +1,38 @@
+*** SPICE deck for cell dac_sim{sch} from library lab_1_dac
+*** Created on Fri Sep 26, 2025 00:42:59
+*** Last revised on Fri Sep 26, 2025 10:40:15
+*** Written on Fri Sep 26, 2025 10:40:19 by Electric VLSI Design System, version 9.08
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT lab_1_dac__r_divider FROM CELL r_divider{sch}
+.SUBCKT lab_1_dac__r_divider bot in out
+Rresnwell@0 net@11 in 10k
+Rresnwell@2 out bot 10k
+Rresnwell@3 out net@11 10k
+.ENDS lab_1_dac__r_divider
+
+*** SUBCIRCUIT lab_1_dac__dac FROM CELL dac{sch}
+.SUBCKT lab_1_dac__dac b0 b1 b2 b3 b4 gnd vout
+** GLOBAL gnd
+Rresnwell@0 net@13 gnd 10k
+Xr_divide@4 net@2 b2 net@1 lab_1_dac__r_divider
+Xr_divide@5 net@1 b3 net@0 lab_1_dac__r_divider
+Xr_divide@6 net@13 b0 net@3 lab_1_dac__r_divider
+Xr_divide@7 net@0 b4 vout lab_1_dac__r_divider
+Xr_divide@8 net@3 b1 net@2 lab_1_dac__r_divider
+.ENDS lab_1_dac__dac
+
+.global gnd
+
+*** TOP LEVEL CELL: dac_sim{sch}
+Xdac@0 b0 b1 b2 b3 b4 gnd vout lab_1_dac__dac
+
+* Spice Code nodes in cell cell 'dac_sim{sch}'
+v4 b4 0
+v3 b3 0
+v2 b2 0
+v1 b1 b0
+vin b0 0 DC 5
+.op
+.END

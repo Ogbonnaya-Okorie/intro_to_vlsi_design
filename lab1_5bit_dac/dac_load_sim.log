@@ -1,0 +1,21 @@
+Circuit: *** SPICE deck for cell dac_load_sim{sch} from library lab_1_dac
+
+.OP point found by inspection.
+
+Date: Sun Sep 28 20:16:13 2025
+Total elapsed time: 0.572 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 48084
+traniter = 48084
+tranpoints = 24043
+accept = 24042
+rejected = 1
+matrix size = 13
+fillins = 0
+solver = Normal
+Matrix Compiler1:      33 opcodes  0.3/[0.2]/0.2
+Matrix Compiler2: 905 bytes object code size  0.2/0.3/[0.1]
+
